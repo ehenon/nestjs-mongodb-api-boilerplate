@@ -32,3 +32,9 @@ npm run start:prod
 - [Husky](https://typicode.github.io/husky/#/) hooks 🐶
 - [Conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) specification 📚
 - [GitHub Actions](https://docs.github.com/en/actions) workflow ⚙️
+
+## Support
+
+Tested with Node.js versions `16.x`, `17.x`, `18.x`, `19.x`.
+
+Automated CI test runs available.
