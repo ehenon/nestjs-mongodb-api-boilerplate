@@ -26,6 +26,7 @@ npm run start:prod
 - [NestJS](https://nestjs.com/) framework 🐱
 - [Express](https://expressjs.com/fr/) http server framework 🚀
 - [Mongoose](https://mongoosejs.com/) ODM 🍃
+- [Winston](https://www.npmjs.com/package/winston) logger 🧾
 - [ESLint](https://eslint.org/) linter 💎
 - [Airbnb](https://www.npmjs.com/package/eslint-config-airbnb-typescript) style guide 🎨
 - [Jest](https://jestjs.io/) testing framework 🧪
