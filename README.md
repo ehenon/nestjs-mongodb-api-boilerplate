@@ -1,6 +1,8 @@
 # NestJS + MongoDB API boilerplate
 
 REST API template using NestJS and MongoDB, with:
+- sample resource ("instrument")
+- health route
 - lint
 - unit tests
 - CI workflow

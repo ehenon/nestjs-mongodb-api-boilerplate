@@ -6,13 +6,11 @@ import {
   Delete,
   Body,
   Param,
-  Query,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
 import {
   ApiOperation,
-  ApiQuery,
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
@@ -43,15 +41,6 @@ export class InstrumentsController {
   @ApiResponse({ status: 500, description: 'Internal Server Error' })
   async findAll(): Promise<InstrumentDocument[]> {
     return this.instrumentsService.findAll();
-  }
-
-  @Get('random')
-  @ApiOperation({ summary: 'Get a random number of instruments (default 10)' })
-  @ApiQuery({ name: 'limit', required: false, type: Number })
-  @ApiResponse({ status: 200, description: 'Instruments successfully returned', type: InstrumentSwaggerModel })
-  @ApiResponse({ status: 500, description: 'Internal Server Error' })
-  async findRandomDocuments(@Query('limit') limit?: number): Promise<InstrumentDocument[]> {
-    return this.instrumentsService.findRandomDocuments(limit);
   }
 
   @Get(':identifier')

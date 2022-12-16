@@ -88,6 +88,33 @@ describe('InstrumentsController', () => {
     });
   });
 
+  describe('findOne()', () => {
+    const MOCK_RESPONSE_FROM_SERVICE = createCompleteInstrumentDocumentStub();
+    const MOCK_IDENTIFIER = '1';
+
+    test('OK: the instrument is returned', async () => {
+      jest
+        .spyOn(instrumentsService, 'findOne')
+        .mockImplementation(async () => MOCK_RESPONSE_FROM_SERVICE);
+      expect(
+        await instrumentsController.findOne(MOCK_IDENTIFIER),
+      ).toEqual(MOCK_RESPONSE_FROM_SERVICE);
+      expect(instrumentsService.findOne).toHaveBeenCalledTimes(1);
+      expect(instrumentsService.findOne).toHaveBeenCalledWith(MOCK_IDENTIFIER);
+    });
+
+    test('KO: the promise is rejected', async () => {
+      jest
+        .spyOn(instrumentsService, 'findOne')
+        .mockImplementation(async () => { throw MOCK_ERROR; });
+      await expect(
+        instrumentsController.findOne(MOCK_IDENTIFIER),
+      ).rejects.toEqual(MOCK_ERROR);
+      expect(instrumentsService.findOne).toHaveBeenCalledTimes(1);
+      expect(instrumentsService.findOne).toHaveBeenCalledWith(MOCK_IDENTIFIER);
+    });
+  });
+
   describe('update()', () => {
     const MOCK_UPDATE_INSTRUMENT_DTO = updateInstrumentDTOStub();
     const MOCK_RESPONSE_FROM_SERVICE = createCompleteInstrumentDocumentStub();

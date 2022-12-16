@@ -2,7 +2,6 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { v1 as uuidv1 } from 'uuid';
-import random from 'lodash.random';
 import { CreateInstrumentDTO } from './dto/create-instrument.dto';
 import { UpdateInstrumentDTO } from './dto/update-instrument.dto';
 import { InstrumentDocument } from './schemas/instrument.schema';
@@ -21,12 +20,6 @@ export class InstrumentsService {
 
   async findAll(): Promise<InstrumentDocument[]> {
     return this.InstrumentModel.find().exec();
-  }
-
-  async findRandomDocuments(limit = 10): Promise<InstrumentDocument[]> {
-    const count = await this.InstrumentModel.countDocuments();
-    const skip = random(0, count - limit);
-    return this.InstrumentModel.find().skip(skip).limit(limit).exec();
   }
 
   async findOne(identifier: string): Promise<InstrumentDocument> {
